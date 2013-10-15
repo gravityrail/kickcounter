@@ -1,5 +1,7 @@
 ## Baby kick tracker
 
+An example of this app running can be seen at http://kickcounter.herokuapp.com
+
 A simple Rails application that allows a user to track the rate of a baby's kicks over time.
 
 The basic process is:
