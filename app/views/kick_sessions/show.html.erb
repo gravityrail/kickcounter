@@ -1,7 +1,9 @@
 <h2>Done!</h2>
 <p><strong>Start time:</strong> <%= @kick_session.started_at %></p>
 <p><strong>End time:</strong> <%= @kick_session.ended_at %></p>
-<p><strong>Kicks/min:</strong> <%= 600.to_f / (@kick_session.ended_at - @kick_session.started_at).to_f %></p>
+<p><strong>Kicks/min:</strong> <%= @kick_session.rate %></p>
 <div class="text-center">
 <%= link_to "New Session", root_path, :class => "btn btn-success btn-lg" %>
 </div>
+
+<%= render 'previous' %>
