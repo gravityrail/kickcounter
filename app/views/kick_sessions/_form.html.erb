@@ -1,0 +1,22 @@
+<%= simple_form_for @kick_session do |f| %>
+  Started at: <%= @kick_session.started_at %><br />
+  Elapsed: <span id="elapsed"></span><br />
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @kick_session.kicks %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= @kick_session.kicks * 10 %>%;">
+      <span><%= @kick_session.kicks %> kicks</span>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= f.button :submit, :value => "Kick", :class => "btn-danger btn-lg" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var then = moment.unix(<%= @kick_session.started_at.to_i %>);
+  $('#elapsed').html(moment().subtract(then).format("mm:ss"));
+  setInterval(function(){
+    $('#elapsed').html(moment().subtract(then).format("mm:ss"));
+  }, 1000);
+});
+</script>

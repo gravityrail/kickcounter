@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  started_at: 2013-10-14 21:55:41
+  ended_at: 2013-10-14 21:55:41
+  kicks: 1
+
+two:
+  started_at: 2013-10-14 21:55:41
+  ended_at: 2013-10-14 21:55:41
+  kicks: 1
