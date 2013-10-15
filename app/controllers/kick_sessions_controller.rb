@@ -1,10 +1,11 @@
 class KickSessionsController < ApplicationController
+  before_filter :authenticate_user!
   def index
     redirect_to new_kick_session_path
   end
 
   def new
-    @kick_session = KickSession.new
+    @kick_session = KickSession.new(:user => current_user)
   end
 
   def show

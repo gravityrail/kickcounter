@@ -1,4 +1,6 @@
 Kickcounter::Application.routes.draw do
+  devise_for :users
+
   resources :kick_sessions
 
   root :to => 'kick_sessions#new'

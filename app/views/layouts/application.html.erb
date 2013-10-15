@@ -19,5 +19,17 @@
     <div class="container" style="padding-top: 25px;">
       <%= yield %>
     </div>
+
+    <footer>
+      <div class="container">
+        <div class="row text-right">
+          <% if current_user %>
+            Logged in as <%= current_user.email %>
+            | <%= link_to("Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-xs") %>
+          <% end %>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
