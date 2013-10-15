@@ -1,7 +1,7 @@
 <h2>Done!</h2>
-<p><strong>Start time:</strong> <%= @kick_session.started_at %></p>
-<p><strong>End time:</strong> <%= @kick_session.ended_at %></p>
-<p><strong>Kicks/min:</strong> <%= @kick_session.rate %></p>
+<p><strong>Start time:</strong> <%= pretty_date(@kick_session.started_at) %></p>
+<p><strong>End time:</strong> <%= pretty_date(@kick_session.ended_at) %></p>
+<p><strong>Kicks/min:</strong> <%= number_with_precision(@kick_session.rate, precision: 2) %></p>
 <div class="text-center">
 <%= link_to "New Session", root_path, :class => "btn btn-success btn-lg" %>
 </div>

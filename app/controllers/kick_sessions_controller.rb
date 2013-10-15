@@ -1,4 +1,8 @@
 class KickSessionsController < ApplicationController
+  def index
+    redirect_to new_kick_session_path
+  end
+
   def new
     @kick_session = KickSession.new
   end

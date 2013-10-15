@@ -3,8 +3,8 @@
     <tr><th>Started</th><th>Duration</th><th>Rate</th></tr>
     <% KickSession.where("ended_at IS NOT NULL").order("started_at DESC").all.each do |kick_session| %>
       <tr>
-        <td><%= kick_session.started_at.strftime("%a, %b %e at %l:%M")  %></td>
-        <td><%= kick_session.ended_at - kick_session.started_at %> seconds</td>
+        <td><%= pretty_date(kick_session.started_at) %></td>
+        <td><%= number_with_precision(kick_session.ended_at - kick_session.started_at, precision: 2) %> seconds</td>
         <td><%= number_with_precision(kick_session.rate, precision: 2) %> kicks/min</td>
       </tr>
     <% end %>
