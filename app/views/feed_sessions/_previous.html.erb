@@ -1,10 +1,16 @@
 <div class="row" style="margin-top: 20px">
   <table class="table table-striped">
-    <tr><th>Started</th><th>Duration</th><th>Notes</th><th>Bottle</th></tr>
+    <tr><th>Started</th><th>Duration</th><th>Time since previous</th><th>Notes</th><th>Bottle</th></tr>
     <% current_user.feed_sessions.where("ended_at IS NOT NULL").order("started_at DESC").all.each do |feed_session| %>
       <tr>
         <td><%= pretty_date(feed_session.started_at) %></td>
         <td><%= Time.at(feed_session.ended_at - feed_session.started_at).utc.strftime("%H:%M:%S") %></td>
+        <td>
+          <% previous_feed_session = current_user.feed_sessions.order("created_at DESC").where("created_at < ?", feed_session.created_at).first %>
+          <% if previous_feed_session %>
+            <%= Time.at(feed_session.started_at - previous_feed_session.started_at).utc.strftime("%H:%M:%S") %>
+          <% end %>
+        </th>
         <td><%= feed_session.note %></td>
         <td><%= feed_session.bottle? %></td>
       </tr>
