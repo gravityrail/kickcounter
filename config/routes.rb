@@ -1,9 +1,11 @@
 Kickcounter::Application.routes.draw do
-  devise_for :users
-
+  resources :feed_sessions
+  resources :poop_sessions
   resources :kick_sessions
 
-  root :to => 'kick_sessions#new'
+  devise_for :users
+
+  root :to => redirect("/feed_sessions/new")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

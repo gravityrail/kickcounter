@@ -1,0 +1,2 @@
+module FeedSessionsHelper
+end

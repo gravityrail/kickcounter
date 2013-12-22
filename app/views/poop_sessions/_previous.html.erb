@@ -1,0 +1,19 @@
+<div class="row" style="margin-top: 20px">
+  <table class="table table-striped">
+    <tr><th>Started</th><th>Time since previous</th><th>Notes</th><th>Poo?</th><th>Pee?</th></tr>
+    <% current_user.poop_sessions.order("created_at DESC").all.each do |poop_session| %>
+      <tr>
+        <td><%= pretty_date(poop_session.created_at) %></td>
+        <td>
+          <% previous_poop_session = current_user.poop_sessions.order("created_at DESC").where("created_at < ?", poop_session.created_at).first %>
+          <% if previous_poop_session %>
+            <%= Time.at(poop_session.created_at - previous_poop_session.created_at).utc.strftime("%H:%M:%S") %>
+          <% end %>
+        </td>
+        <td><%= poop_session.note %></td>
+        <td><%= poop_session.poo? %></td>
+        <td><%= poop_session.pee? %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

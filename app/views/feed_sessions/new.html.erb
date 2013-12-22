@@ -1,0 +1,9 @@
+<%= simple_form_for @feed_session do |f| %>
+  <%= f.input :user_id, as: :hidden %>
+  <div class="text-center">
+    <%= f.button :submit, :value => "Start feeding", :class => "btn-primary btn-lg" %>
+    <%= f.input :bottle, wrapper: :inline_checkbox, wrapper_html: {style: "display: inline-block;"} %>
+  </div>
+<% end %>
+
+<%= render 'previous' %>

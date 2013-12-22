@@ -33,6 +33,5 @@ class KickSessionsController < ApplicationController
     end
 
     @kick_session.save!
-
   end
 end

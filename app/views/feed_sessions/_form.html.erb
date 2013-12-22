@@ -1,0 +1,18 @@
+<%= simple_form_for @feed_session do |f| %>
+  <span id="elapsed"></span> elapsed <br />
+  <%= f.input :note, as: :string %>
+  <div class="text-center">
+    <%= f.button :submit, :value => "Finished feeding", :class => "btn-primary btn-lg" %>
+    <%= f.input :bottle, wrapper: :inline_checkbox, wrapper_html: {style: "display: inline-block;"}, input_html: {disabled: true} %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var then = moment.unix(<%= @feed_session.started_at.to_i %>);
+  $('#elapsed').html(moment().subtract(then).format("mm:ss"));
+  setInterval(function(){
+    $('#elapsed').html(moment().subtract(then).format("mm:ss"));
+  }, 1000);
+});
+</script>

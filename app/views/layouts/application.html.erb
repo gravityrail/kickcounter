@@ -17,6 +17,13 @@
   </head>
   <body>
     <div class="container" style="padding-top: 25px;">
+      <ul class="nav nav-pills">
+        <%= nav_link_to "Kicks", kick_sessions_path, ->() { params[:controller] == 'kick_sessions' } %>
+        <%= nav_link_to "Poops", poop_sessions_path, ->() { params[:controller] == 'poop_sessions' } %>
+        <%= nav_link_to "Feeds", feed_sessions_path, ->() { params[:controller] == 'feed_sessions' } %>
+      </ul>
+    </div>
+    <div class="container" style="padding-top: 25px;">
       <%= yield %>
     </div>
 

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015065211) do
+ActiveRecord::Schema.define(:version => 20131222222258) do
+
+  create_table "feed_sessions", :force => true do |t|
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.text     "note"
+    t.boolean  "bottle",     :default => false
+    t.integer  "user_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "kick_sessions", :force => true do |t|
     t.datetime "started_at"
@@ -20,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20131015065211) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "user_id"
+  end
+
+  create_table "poop_sessions", :force => true do |t|
+    t.text     "note"
+    t.boolean  "poo",        :default => false
+    t.boolean  "pee",        :default => false
+    t.integer  "user_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|
